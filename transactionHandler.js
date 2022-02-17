@@ -34,7 +34,7 @@ const signAndProcessTransaction = async (encodedData) => {
     const status = await sendTransaction(signedTransaction);
     return status;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
