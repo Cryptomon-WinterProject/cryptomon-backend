@@ -43,6 +43,7 @@ appData.contract.events.NewChallenge({ fromBlock: 0 }, async (error, event) => {
     const challanger = event.returnValues._challenger;
     const opponent = event.returnValues._opponent;
 
+
     // Calculate challange hash with challanger and opponent soliditySha3
     const challangeHash = soliditySha3(
       { type: "address", value: challanger },
@@ -60,7 +61,7 @@ appData.contract.events.NewChallenge({ fromBlock: 0 }, async (error, event) => {
 });
 
 appData.contract.events.AcceptChallenge(
-  { fromBlock: 0 },
+  // { fromBlock: 0 },
   async (error, event) => {
     if (error) {
       console.log("error:", error);
