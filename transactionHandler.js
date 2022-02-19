@@ -6,7 +6,7 @@ appData = {};
 const { WEB3_PROVIDER, ACCOUNT_PRIVATE_KEY } = process.env;
 const web3 = new Web3(WEB3_PROVIDER);
 
-appData.account = "0xC48E03A9e023b0b12173dAeE8E61e058062BC327";
+appData.account = "0xB46233500f2eDEaba24674e0714D344C08916ec2";
 appData.contract = new web3.eth.Contract(abi, address);
 
 const signTransaction = async (encodedData) => {
