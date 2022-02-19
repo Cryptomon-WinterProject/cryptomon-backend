@@ -19,9 +19,15 @@ server
     console.log("Server is listening on port " + port);
   });
 
-const io = socketIO(server);
+const io = socketIO(server, {
+  cors: {
+    origin: "*",
+  },
+});
 
 const users = {};
+// Set of users
+const onlineUsers = new Set();
 
 appData.contract.events.ChallengeReady(
   //   { fromBlock: 0 },
@@ -42,7 +48,6 @@ appData.contract.events.NewChallenge({ fromBlock: 0 }, async (error, event) => {
   } else {
     const challanger = event.returnValues._challenger;
     const opponent = event.returnValues._opponent;
-
 
     // Calculate challange hash with challanger and opponent soliditySha3
     const challangeHash = soliditySha3(
@@ -124,30 +129,18 @@ appData.contract.events.AnnounceWinner(
 
 io.on("connection", function (socket) {
   socket.on("login", async function (data) {
-    users[socket.id] = data.address;
-
-    try {
-      const encodedData = appData.contract.methods
-        .updateUserConnectivityStatus(data.address, true)
-        .encodeABI();
-
-      await signAndProcessTransaction(encodedData);
-    } catch (err) {
-      console.log("err in login: " + err);
+    if (users[socket.id]) {
+      onlineUsers.delete(users[socket.id]);
+      delete users[socket.id];
     }
+    users[socket.id] = data.address;
+    onlineUsers.add(data.address);
+    io.emit("statusUpdate", Array.from(onlineUsers));
   });
 
   socket.on("disconnect", async function () {
-    if (users[socket.id]) {
-      try {
-        const encodedData = appData.contract.methods
-          .updateUserConnectivityStatus(users[socket.id], false)
-          .encodeABI();
-        await signAndProcessTransaction(encodedData);
-      } catch (err) {
-        console.log("err in disconnect: " + err);
-      }
-    }
+    onlineUsers.delete(users[socket.id]);
+    io.emit("statusUpdate", Array.from(onlineUsers));
     delete users[socket.id];
   });
 });
