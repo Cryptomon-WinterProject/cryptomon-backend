@@ -41,4 +41,5 @@ const signAndProcessTransaction = async (encodedData) => {
 module.exports = {
   appData,
   signAndProcessTransaction,
+  web3,
 };

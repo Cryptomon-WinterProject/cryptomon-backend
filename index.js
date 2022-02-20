@@ -6,6 +6,7 @@ const { generateRandomNumber } = require("./randomNumberGenerator.js");
 const {
   appData,
   signAndProcessTransaction,
+  web3,
 } = require("./transactionHandler.js");
 
 const port = process.env.PORT || 8000;
@@ -28,6 +29,7 @@ const io = socketIO(server, {
 const users = {};
 // Set of users
 const onlineUsers = new Set();
+const auctionsData = {}; // map auctionId to users set
 
 appData.contract.events.ChallengeReady(
   //   { fromBlock: 0 },
@@ -108,6 +110,71 @@ appData.contract.events.AnnounceRoundWinner(
     }
   }
 );
+
+appData.contract.events.NewBid({ fromBlock: 0 }, async (error, event) => {
+  if (error) {
+    console.log("error in announce round winner: " + error);
+  } else {
+    const bidData = {
+      cardIndex: event.returnValues._cardIndex,
+      bidder: event.returnValues._bidder,
+    };
+    // add bid to auctionsData map
+    if (!auctionsData[bidData.cardIndex]) {
+      auctionsData[bidData.cardIndex] = new Set();
+    }
+    auctionsData[bidData.cardIndex].add(bidData.bidder);
+    console.log(auctionsData);
+  }
+});
+
+appData.contract.events.AuctionCreated(
+  { fromBlock: 0 },
+  async (error, event) => {
+    if (error) {
+      console.log("error in announce round winner: " + error);
+    } else {
+      const blockNumber = event.blockNumber;
+      const block = await web3.eth.getBlock(blockNumber);
+
+      console.log(
+        "Auction created for " +
+          event.returnValues._cardIndex +
+          " with min Amount of " +
+          event.returnValues._minAmount +
+          " moncoins" +
+          " at " +
+          new Date(block.timestamp * 1000).toLocaleString()
+      );
+
+      let timeToCall =
+        new Date(block.timestamp * 1000 + 86400000).getTime() - Date.now();
+      console.log("Time to call settleAuction: " + timeToCall);
+      timeToCall = 500;
+      if (timeToCall > 0) {
+        setTimeout(async () => {
+          try {
+            if (!auctionsData[event.returnValues._cardIndex]) {
+              auctionsData[event.returnValues._cardIndex] = new Set();
+            }
+            const encodedData = await appData.contract.methods
+              .settleAuction(
+                event.returnValues._cardIndex,
+                Array.from(auctionsData[event.returnValues._cardIndex])
+              )
+              .encodeABI();
+
+            await signAndProcessTransaction(encodedData);
+            console.log("Successfully called settleAuction");
+          } catch (error) {
+            console.log("err in settle auction: " + error);
+          }
+        }, timeToCall);
+      }
+    }
+  }
+);
+
 appData.contract.events.AnnounceWinner(
   { fromBlock: 0 },
   async (error, event) => {
