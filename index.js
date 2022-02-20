@@ -150,7 +150,6 @@ appData.contract.events.AuctionCreated(
       let timeToCall =
         new Date(block.timestamp * 1000 + 86400000).getTime() - Date.now();
       console.log("Time to call settleAuction: " + timeToCall);
-      timeToCall = 500;
       if (timeToCall > 0) {
         setTimeout(async () => {
           try {
