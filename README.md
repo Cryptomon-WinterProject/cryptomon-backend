@@ -1,70 +1,115 @@
-# Getting Started
+![Logo](https://res.cloudinary.com/connect-x/image/upload/v1645082778/CryptomonLogo_da9mc3.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Generator Front To Back](https://github.com/GunaShekar02/generator-front-to-back).
+Welcome to Cryptomon, A fun Pokemon Game.
 
-## Available Scripts
+## Objective
 
-In the project directory, you can run:
+As we hear a lot about blockchain and NFT's in every field, we are implementing the blockchain concept for pokemon game lovers.
 
-### `yarn start`
+## What does it do?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- When a player registers, they receive a set of starter CryptoMons.
+- Players can enter a lobby to challenge and battle other online players with their CryptoMons.
+- The game algorithm considers the XP(rating) of the CryptoMon, the type of the CryptoMon, adds a small factor of randomness, win/lose Streak of the player and decides the winner of the battle.
+- For each battle you win, some Moncoins(Currency to use in battle and shop other's Cryptomons) add to your account.
+- If a player loses everything in the battles, But still wants to play, then the player can sell their Cryptomons to others in exchange for Moncoins through the Auction method at Store.- A player can also buy some new crazy Cryptomons from Store.
+- A player can also Train their Cryptomons(In which they can increase the XP of the cryptomons at different Moncoins rates) to make them always win cards.
+- Player can also buy some crazy Cryptomons from Store.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Hosted URL
 
-### `yarn test`
+https://cryptomon-iiitm.netlify.app/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Development Setup
 
-### `yarn build`
+### Frontend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Clone the repository and run `npm install` to install the necessary dependencies.
+- Run `npm start` to get the server up and running.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Clone the repository and run `yarn install` to install the necessary dependencies.
+- Run `yarn start` to get the server up and running.
+- Create a `.env` file and add your WEB3_PROVIDER and ACCOUNT_PRIVATE_KEY.
 
-### `yarn eject`
+### Blockchain
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Open your Ganache account and link the account.
+- Enable MetaMask for Transcations.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Demo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+https://drive.google.com/file/d/1MY4sTesn01kohd_dsUrUFYJoknegp6v3/view
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Screenshots
 
-## Learn More
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset1.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset2.png)
 
-### Code Splitting
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset3.png)
 
-### Analyzing the Bundle Size
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset4.png)
 
-### Making a Progressive Web App
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset5.png)
 
-### Advanced Configuration
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset6.png)
 
-### Deployment
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset7.png)
 
-### `yarn build` fails to minify
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset8.png)
+
+<br>
+
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset9.png)
+
+<br>
+
+![App Screenshot](https://github.com/Cryptomon-WinterProject/frontend/blob/main/src/Assets/ReadMeAssets/Asset10.png)
+
+## 🔗 Know the Project Creater
+
+Akash Gupta
+
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/akashgupta1909)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/akash-gupta-1909/)
+
+Ayush Garg
+
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/Ayush-019)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ayush-garg-4ba2b1206/)
+
+Harsh Gupta
+
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/harshgupta1249)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/harsh-gupta-72b32120a/)
+
+Harshil Mendpara
+
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/HarshilMendpara)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/harshil-mendpara/)
+
+Ujjawal Gupta
+
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/UjjawalGupta30)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ujjawalgupta30/)
+
+Raj Varsani
+
+[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/RajVarsani)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/varsani-raj/)
